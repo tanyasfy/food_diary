@@ -36,8 +36,6 @@ const setupWebsocket = (
  * Provide WebSocket service
  */
 export const provideWebsocketService = (): void => {
-  const serverEquipmentCount = ref(0)
-  const initialized = ref<boolean>(false)
   const connectionState = ref<boolean>(false)
 
   const usersStore = useUsersData();
