@@ -7,4 +7,6 @@ export interface Users {
   user_weight?: number;
   user_height?: number;
   user_birth?: string;
+  user_gender?: number;
+  user_bmi?: string;
 }

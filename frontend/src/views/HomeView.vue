@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import TheWelcome from '../components/TheWelcome.vue'
+import UserData from '../components/UserData.vue'
 import { useUsersData } from '@/stores/users'
 import AddNewUser from '../components/modals/AddNewUser.vue'
 import { ref } from 'vue';
 
 const usersStore = useUsersData();
 const { usersData } = storeToRefs(usersStore);
+
+console.log(usersData.value)
 
 const openModal = ref<boolean>(false);
 const add = () => {
@@ -17,7 +19,7 @@ const add = () => {
 <template>
   <main>
   <div class="main-wrapper">
-    <TheWelcome 
+    <UserData 
       v-for="user in usersData"
         :key="user.user_id"
         :userData="user"

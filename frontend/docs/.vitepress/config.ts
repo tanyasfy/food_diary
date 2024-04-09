@@ -17,8 +17,7 @@ export default defineConfig({
         {
           text: 'Components',
           items: [
-            { text: 'MassIndex', link: '/src/components/MassIndex' },
-            { text: 'TheWelcome', link: '/src/components/TheWelcome' }
+            { text: 'UserData', link: '/src/components/UserData' }
           ]
         },
         {

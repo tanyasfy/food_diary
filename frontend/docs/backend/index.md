@@ -32,8 +32,25 @@ Comment data definition and mapping to the database for our ORM
 
 ## :tropical_drink: Interfaces
 
+- [Users](#gear-users)
 - [WebsocketMessage](#gear-websocketmessage)
 - [TypeOrmOpts](#gear-typeormopts)
+
+### :gear: Users
+
+
+
+| Property | Type | Description |
+| ---------- | ---------- | ---------- |
+| `user_id` | `string` |  |
+| `user_name` | `string or undefined` |  |
+| `user_vorname` | `string` |  |
+| `user_weight` | `number or undefined` |  |
+| `user_height` | `number or undefined` |  |
+| `user_birth` | `string or undefined` |  |
+| `user_gender` | `number or undefined` |  |
+| `user_bmi` | `string or undefined` |  |
+
 
 ### :gear: WebsocketMessage
 

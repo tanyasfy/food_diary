@@ -2,11 +2,12 @@
 
 ## Props
 
-| Prop name    | Description | Type    | Values | Default |
-| ------------ | ----------- | ------- | ------ | ------- |
-| bmi          |             | number  | -      |         |
-| leftPosition |             | string  | -      |         |
-| flag         |             | boolean | -      |         |
-| normalBW     |             | number  | -      |         |
+| Prop name     | Description | Type    | Values | Default |
+| ------------- | ----------- | ------- | ------ | ------- |
+| bmi           |             | number  | -      |         |
+| leftPosition  |             | string  | -      |         |
+| flag          |             | boolean | -      |         |
+| normalBW      |             | number  | -      |         |
+| stoffWechseel |             | number  | -      |         |
 
 ---
