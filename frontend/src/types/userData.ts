@@ -1,5 +1,7 @@
 export interface Users {
+  /**user id */
   user_id?: string;
+  /**user name */ 
   user_name?: string;
   user_vorname: string;
   user_weight?: number;
