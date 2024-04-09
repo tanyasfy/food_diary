@@ -59,10 +59,8 @@
 </template>
 
 <script lang="ts" setup>
-import Modal from '@/components/modals/modal.vue';
-import { PropType, ref } from 'vue';
+import { ref } from 'vue';
 import { baseUrl } from "@/utils/api";
-import { Users } from '@/types/userData';
 import { generateUID } from '@/utils/generateUserId.ts'
 
 const props = defineProps({
@@ -117,7 +115,6 @@ const save = async () => {
       user_id = generateUID()
 
       emit('close');
-      //emit('edit', {userData: user.value})
   }
 
 const hideModal = () => {

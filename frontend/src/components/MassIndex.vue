@@ -12,7 +12,7 @@
           :class="flag ? 'normal' : 'unvisible'">
       </div>
       <div>Normales Körpergewicht: <span id="normalBW"></span> {{ normalBW }} </div>
-      <div>Grundstoffwechsel: <span id="basicMet"></span> </div>
+      <div>Grundstoffwechsel: <span id="basicMet"></span> {{ stoffWechseel }} </div>
     </div>
 </template>
 
@@ -33,6 +33,10 @@ const props = defineProps({
   normalBW: {
     type: Number,
     required: true
+  },
+  stoffWechseel: {
+    type: Number,
+    required: false
   }
 })
 
