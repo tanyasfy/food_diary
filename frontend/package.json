@@ -11,18 +11,12 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "docgen": "vue-docgen src/**/*.vue docs",
-    "docs:dev": "vitepress dev docs",
-    "generate-docs": "node src/conf.js",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
     "pinia": "^2.1.7",
-    "typedoc": "^0.25.12",
     "vue": "^3.4.21",
     "vue-router": "^4.2.5",
     "ws": "^8.16.0"
@@ -44,12 +38,9 @@
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.1",
     "prettier": "^3.0.3",
-    "tsdoc-markdown": "^0.4.0",
     "typescript": "~5.3.0",
     "vite": "^5.0.11",
-    "vitepress": "^1.0.1",
     "vitest": "^1.2.2",
-    "vue-docgen-cli": "^4.78.0",
     "vue-tsc": "^1.8.27"
   }
 }
