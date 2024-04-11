@@ -7,9 +7,9 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      {text: 'Components', link: '/src/index'},
-      {text: 'Frontend TS', link: '/frontend/index'},
+      {text: 'Home', link: '/' },
+      {text: 'Components', link: '/src/index/'},
+      {text: 'Frontend TS', link: '/frontend/index/'},
       {text: 'Backend TS', link: '/backend/index'} ],
 
     sidebar: {

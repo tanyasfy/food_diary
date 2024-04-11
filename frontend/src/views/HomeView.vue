@@ -8,7 +8,7 @@ import { ref } from 'vue';
 const usersStore = useUsersData();
 const { usersData } = storeToRefs(usersStore);
 
-console.log(usersData.value)
+console.log(usersData.value, window.location.href, import.meta.url)
 
 const openModal = ref<boolean>(false);
 const add = () => {
