@@ -75,7 +75,8 @@ const stoffWechseel = ref<number | undefined>(undefined)
 const calculate = () => {
   bmi.value =  calculateBMI(Number(user.value.user_weight), Number(user.value.user_height), Number(user.value.user_gender)).bmi;
   normalBW.value = calculateBMI(Number(user.value.user_weight), Number(user.value.user_height), Number(user.value.user_gender)).normalBW;
-
+  stoffWechseel.value = grundStoffWechsel(Number(user.value.user_weight), Number(user.value.user_height), Number(user.value.user_gender));
+  
   if(bmi.value) {
     flag.value = true;
     leftPosition.value = getLeftPosition(bmi.value)?.position
