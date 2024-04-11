@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Vue Components
-      link: /src/index
+      link: /src/index1
     - theme: brand
       text: Frontend
       link: /frontend/index

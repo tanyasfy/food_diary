@@ -13,7 +13,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "docs:dev": "vitepress dev docs",
-    "docgen": "vue-docgen src/**/*.vue docs",
+    "docgen": "vue-docgen -c docgen.config.cjs",
     "generate-docs": "node tsmarkdoenconfig.js",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
