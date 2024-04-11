@@ -3,6 +3,7 @@ import fp from 'fastify-plugin';
 import 'reflect-metadata';
 import { Connection, createConnection, LoggerOptions } from 'typeorm';
 import { User } from '../entities/userEntity';
+import { Breakfest } from "../entities/breakfest";
 
 /**
  * Basic TypeORM options
@@ -28,7 +29,7 @@ export default fp<TypeOrmOpts>(async (fastify, opts) => {
       username: "root",
       password: "12345",
       database: "food_diary",
-      entities: [User],
+      entities: [User, Breakfest],
       synchronize: false,
       logging: false
     })

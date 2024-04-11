@@ -1,16 +1,28 @@
 import { FastifyInstance, FastifyPluginAsync } from "fastify";
 import { User } from "../entities/userEntity";
+import { Breakfest } from "../entities/breakfest";
 import { sendToClients } from "../utils/websocketHelpers";
 
 /**
  * Get all users from DB
  */
-
 export const getUsers = async (
   fastify: FastifyInstance
 ): Promise<User[]> => {
   return await fastify.orm
     .getRepository(User)
+    .createQueryBuilder()
+    .getMany();
+};
+
+/**
+ * Get breakfests from DB
+ */
+export const getBreakfest = async (
+  fastify: FastifyInstance
+): Promise<Breakfest[]> => {
+  return await fastify.orm
+    .getRepository(Breakfest)
     .createQueryBuilder()
     .getMany();
 };
@@ -48,6 +60,20 @@ const root: FastifyPluginAsync = async (fastify): Promise<void> => {
         
       });
 
+      // Sending the known equipment data to the new client.
+      getBreakfest(fastify).then(async (data) => {
+        try {
+          sendToClients(connection.socket as any, {
+            type: "breakfest",
+            action: "update",
+            payload: data
+          });
+        } catch (e) {
+          fastify.log.error('%s', e)
+        }
+        
+      });
+
       (connection.socket as any).on("message", async (rawData: any) => {
         const data = JSON.parse(rawData.toString());
         if (data.type === "users") {
@@ -67,6 +93,14 @@ const root: FastifyPluginAsync = async (fastify): Promise<void> => {
           (connection.socket as any).send(
             JSON.stringify({
               type: "usersUpdate",
+              action: "update",
+              payload: { data }
+            })
+          );
+        } else if (data.type === "breakfest") {
+          (connection.socket as any).send(
+            JSON.stringify({
+              type: "breakfest",
               action: "update",
               payload: { data }
             })

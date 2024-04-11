@@ -7,30 +7,34 @@
     <h4>Du kannst immer fit sein, wenn du darauf 24 Stunden pro Tag achtest</h4>
   </header>
 
+  <b-tabs content-class="mt-3">
+    <b-tab title="Main Information" active>
+      <b-card class="main_information">
+        <h4> Main Information </h4>
+        
+        <div class="basic_data">
+          <div><span>Alter: </span> <input class="input_data" type="number" name="alter" id="alter" placeholder="18" :value="age"></div>
+          <div><span>Gewicht: </span> <input class="input_data" type="number" name="weight" id="weight" placeholder="49" v-model="user.user_weight"></div>
+          <div><span>Größe: </span> <input class="input_data" type="number" name="height" id="height" placeholder="173" v-model="user.user_height"></div>
+          <div><span>Geschlecht: </span> 
+            <input type="radio" id="fem" value="1" v-model="user.user_gender" />
+              <label for="fem">Feminin</label>
+            <input type="radio" id="mas" value="2" v-model="user.user_gender" />
+              <label for="mas">Masculine</label></div>
+        </div>
+        <b-button variant="primary" @click="calculate()">Calculate</b-button>
+      </b-card>
 
-    <b-card class="main_information">
-      <h4> Main Information </h4>
-      
-      <div class="basic_data">
-        <div><span>Alter: </span> <input class="input_data" type="number" name="alter" id="alter" placeholder="18" :value="age"></div>
-        <div><span>Gewicht: </span> <input class="input_data" type="number" name="weight" id="weight" placeholder="49" v-model="user.user_weight"></div>
-        <div><span>Größe: </span> <input class="input_data" type="number" name="height" id="height" placeholder="173" v-model="user.user_height"></div>
-        <div><span>Geschlecht: </span> 
-          <input type="radio" id="fem" value="1" v-model="user.user_gender" />
-            <label for="fem">Feminin</label>
-          <input type="radio" id="mas" value="2" v-model="user.user_gender" />
-            <label for="mas">Masculine</label></div>
-      </div>
-      <b-button variant="primary" @click="calculate()">Calculate</b-button>
-    </b-card>
-
-    <MassIndex 
-      :bmi="bmi"
-      :leftPosition="leftPosition"
-      :flag="flag"
-      :normalBW="normalBW"
-      :stoffWechseel="stoffWechseel"
-    />
+      <MassIndex 
+        :bmi="bmi"
+        :leftPosition="leftPosition"
+        :flag="flag"
+        :normalBW="normalBW"
+        :stoffWechseel="stoffWechseel"
+      />
+    </b-tab>
+    <b-tab title="Food Diary"><Breakfest :userData="user"></Breakfest></b-tab>
+  </b-tabs>
   <b-button block variant="primary" @click="save()">Save</b-button>
   <EditInfoModal :open="openModal" :user="user" @close="openModal = false"/>
   <SuccessMessage :open="success" @close="success = false"/>
@@ -42,6 +46,7 @@
 import MassIndex from '../components/MassIndex.vue'
 import EditInfoModal from '../components/modals/EditInfoModal.vue';
 import SuccessMessage from '../components/modals/SuccessMessage.vue';
+import Breakfest from '../components/Breakfest.vue';
 import { useUsersData } from '@/stores/users'
 import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';

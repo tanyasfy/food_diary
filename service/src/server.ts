@@ -1,8 +1,6 @@
 "use strict";
 import Fastify from "fastify";
-import * as fs from "fs";
 import { AddressInfo } from "net";
-import * as path from "path";
 import code from "./app";
 
 // Instantiate Fastify with some config

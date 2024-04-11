@@ -1,6 +1,6 @@
 import { Ref, inject, ref } from "vue"
 import { useUsersData } from '@/stores/users'
-
+import { useBreakfestData } from '@/stores/breakfest'
 
 const EquipmentsSymbol = Symbol()
 
@@ -39,6 +39,7 @@ export const provideWebsocketService = (): void => {
   const connectionState = ref<boolean>(false)
 
   const usersStore = useUsersData();
+  const breakfestStore = useBreakfestData();
 
   const onMessage = (message: any) => {
     const type = message.type
@@ -53,6 +54,11 @@ export const provideWebsocketService = (): void => {
       } else if (type === 'usersUpdate') {
           console.log(payload)
         usersStore.addNewData(payload)
+      } else if (type === 'breakfest') {
+        if (action === 'update') {
+          console.log(payload)
+          breakfestStore.replaceBreakfestData(payload)
+        }
       }
     } else {
       // eslint-disable-next-line no-console
