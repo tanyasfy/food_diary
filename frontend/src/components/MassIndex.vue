@@ -12,33 +12,39 @@
           :class="flag ? 'normal' : 'unvisible'">
       </div>
       <div>Normales Körpergewicht: <span id="normalBW"></span> {{ normalBW }} </div>
-      <div>Grundstoffwechsel: <span id="basicMet"></span> {{ stoffWechseel }} </div>
+      <div>Grundstoffwechsel: <span id="basicMet"></span> {{ stoffWechsel }} </div>
     </div>
 </template>
 
 <script lang="ts" setup>
+// Defining props for a component - because every star needs its supporting cast!
 const props = defineProps({
+  /** The BMI (Body Mass Index) - a numerical indicator of health or lack thereof. */
   bmi: {
     type: Number,
-    required: true
+    required: true // Mandatory! Your BMI can't hide from the truth.
   },
+  /** The left position for a graphical indicator - because being centered is so last season. */
   leftPosition: {
     type: String,
-    required: false
+    required: false // Optional, like a pinch of seasoning; adds flavor but not necessary for survival.
   },
+  /** A flag to indicate something - because sometimes, you just need to raise a flag and see who salutes. */
   flag: {
     type: Boolean,
-    required: true
+    required: true // Mandatory! Flags don't wave themselves, you know.
   },
+  /** The normal body weight - a benchmark for comparison, like the gold standard but for your body. */
   normalBW: {
     type: Number,
-    required: true
+    required: true // Mandatory! Without it, how will you know if you're above or below average?
   },
-  stoffWechseel: {
+  /** The metabolic rate - because your body's furnace needs fuel to burn. */
+  stoffWechsel: {
     type: Number,
-    required: false
+    required: false // Optional, like a turbocharger for your metabolism; nice to have but not essential.
   }
-})
+});
 
 console.log(props)
 </script>
