@@ -23,8 +23,8 @@ Writing docs can be hard, but with Vuepress it's so much more fun!
 It is a powerfool tool for a generate of source code documentation
 :::
 
-::: danger Leichte Konfiguration
-It can be leight konfigurierbar
+::: danger Easy configuration
+It can be easily configurable.
 :::
 
 ## Code Blocks

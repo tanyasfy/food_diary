@@ -11,5 +11,10 @@ export default defineConfig({
       {text: 'Components', link: '/src/index1'},
       {text: 'Frontend TS', link: '/frontend/index'},
       {text: 'Backend TS', link: '/backend/index'} ],
-  }
+    sidebar: [
+        {text: 'Build Doku', link: '/deploy' },
+        {text: 'Run App local', link: '/runapp' },
+      ]
+  },
+  
 })
