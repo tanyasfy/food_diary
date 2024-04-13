@@ -1,8 +1,8 @@
 /**
- * Generate userId for a Saving to the DB
- * @returns void
- */
-
+ * Generates a unique identifier (UUID) for saving to the database.
+ * This isn't your average ID; it's a super ID with dashes and everything!
+ * @returns A string that looks like a secret agent's code name but is actually just a UUID.
+*/
 export const generateUID = () => {
   let d = new Date().getTime();
   if (typeof performance !== 'undefined' && typeof performance.now === 'function') {

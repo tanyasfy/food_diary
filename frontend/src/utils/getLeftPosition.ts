@@ -1,9 +1,9 @@
 /**
- * Left Position for a flag and Color of BMI in BMI Grafik
- * @param bmiCalc 
- * @returns 
- */
-
+ * Determines the left position and color for a BMI marker in a graphical representation.
+ * It's not just about knowing your BMI, it's about seeing where it fits on the spectrum!
+ * @param bmiCalc The calculated BMI value to be plotted.
+ * @returns An object containing the pixel position on the x-axis and the corresponding color indicating BMI category.
+*/
 export const getLeftPosition = (bmiCalc: number) => {
   let position;
   let colour;

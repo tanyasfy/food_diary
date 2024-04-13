@@ -4,10 +4,12 @@ import { PropType } from 'vue';
 
 defineProps({
   /**
-   * User data
+   * User data - because every component needs to know who's who in the userverse.
    */
    userData: {
+    /** The type of data expected for the user - structured according to the Users interface. */
     type: Object as PropType<Users>,
+    /** Mandatory! No component can function properly without knowing who's behind the screen. */
     required: true,
   }
 })

@@ -1,9 +1,9 @@
 /**
- * Get age in years from date of birth
- * @param birth 
- * @returns age as number
- */
-
+ * Calculates the age in years from a given date of birth.
+ * It's like a time machine, but it only tells you how old you are.
+ * @param birth A date string in DD-MM-YYYY format, because consistency is key.
+ * @returns The age as a number, or undefined if you forgot to input your birthday.
+*/
 export const getAge = (birth: string | undefined): number | undefined => {
   if (birth) {
     const year = Number(birth.slice(birth.length-4, birth.length+1));
