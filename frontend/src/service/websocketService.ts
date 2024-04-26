@@ -1,6 +1,7 @@
 import { Ref, inject, ref } from "vue"
 import { useUsersData } from '@/stores/users'
 import { useBreakfestData } from '@/stores/breakfest'
+import { useFoodData } from "@/stores/food"
 
 const EquipmentsSymbol = Symbol()
 
@@ -40,6 +41,7 @@ export const provideWebsocketService = (): void => {
 
   const usersStore = useUsersData();
   const breakfestStore = useBreakfestData();
+  const foodStore = useFoodData()
 
   const onMessage = (message: any) => {
     const type = message.type
@@ -58,6 +60,16 @@ export const provideWebsocketService = (): void => {
         if (action === 'update') {
           console.log(payload)
           breakfestStore.replaceBreakfestData(payload)
+        }
+      } else if (type === 'food') {
+        if (action === 'update') {
+          console.log(payload)
+          foodStore.getFoodData(payload)
+        }
+      } else if (type === 'categories') {
+        if (action === 'update') {
+          console.log(payload)
+          foodStore.getCategoryData(payload)
         }
       }
     } else {

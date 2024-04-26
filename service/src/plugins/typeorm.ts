@@ -4,6 +4,8 @@ import 'reflect-metadata';
 import { Connection, createConnection, LoggerOptions } from 'typeorm';
 import { User } from '../entities/userEntity';
 import { Breakfest } from "../entities/breakfest";
+import { Food } from "../entities/food";
+import { Categories } from "../entities/categories";
 
 /**
  * Basic TypeORM options
@@ -29,7 +31,7 @@ export default fp<TypeOrmOpts>(async (fastify, opts) => {
       username: "root",
       password: "12345",
       database: "food_diary",
-      entities: [User, Breakfest],
+      entities: [User, Breakfest, Food, Categories],
       synchronize: false,
       logging: false
     })

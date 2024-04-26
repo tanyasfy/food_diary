@@ -2,6 +2,8 @@ import { FastifyInstance, FastifyPluginAsync } from "fastify";
 import { User } from "../entities/userEntity";
 import { Breakfest } from "../entities/breakfest";
 import { sendToClients } from "../utils/websocketHelpers";
+import { Food } from "../entities/food";
+import { Categories } from "../entities/categories";
 
 /**
  * Get all users from DB
@@ -23,6 +25,30 @@ export const getBreakfest = async (
 ): Promise<Breakfest[]> => {
   return await fastify.orm
     .getRepository(Breakfest)
+    .createQueryBuilder()
+    .getMany();
+};
+
+/**
+ * Get Food from DB
+ */
+ export const getFood = async (
+  fastify: FastifyInstance
+): Promise<Food[]> => {
+  return await fastify.orm
+    .getRepository(Food)
+    .createQueryBuilder()
+    .getMany();
+};
+
+/**
+ * Get Categories from DB
+ */
+ export const getCategories = async (
+  fastify: FastifyInstance
+): Promise<Categories[]> => {
+  return await fastify.orm
+    .getRepository(Categories)
     .createQueryBuilder()
     .getMany();
 };
@@ -74,6 +100,32 @@ const root: FastifyPluginAsync = async (fastify): Promise<void> => {
         
       });
 
+      // Sending the known food to the new client.
+      getFood(fastify).then(async (data) => {
+        try {
+          sendToClients(connection.socket as any, {
+            type: "food",
+            action: "update",
+            payload: data
+          });
+        } catch (e) {
+          fastify.log.error('%s', e)
+        }
+      });
+
+      // Sending the known categories to the new client.
+      getCategories(fastify).then(async (data) => {
+        try {
+          sendToClients(connection.socket as any, {
+            type: "categories",
+            action: "update",
+            payload: data
+          });
+        } catch (e) {
+          fastify.log.error('%s', e)
+        }
+      });
+
       (connection.socket as any).on("message", async (rawData: any) => {
         const data = JSON.parse(rawData.toString());
         if (data.type === "users") {
@@ -101,6 +153,22 @@ const root: FastifyPluginAsync = async (fastify): Promise<void> => {
           (connection.socket as any).send(
             JSON.stringify({
               type: "breakfest",
+              action: "update",
+              payload: { data }
+            })
+          );
+        } else if (data.type === "food") {
+          (connection.socket as any).send(
+            JSON.stringify({
+              type: "food",
+              action: "update",
+              payload: { data }
+            })
+          );
+        } else if (data.type === "categories") {
+          (connection.socket as any).send(
+            JSON.stringify({
+              type: "categories",
               action: "update",
               payload: { data }
             })
